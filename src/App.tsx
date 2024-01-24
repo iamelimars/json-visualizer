@@ -1,7 +1,7 @@
 import "reactflow/dist/style.css";
 import { FlowGraph } from "./components/FlowGraph";
 import { Sidebar } from "./components/Sidebar";
-import { useState } from "react";
+import { Suspense, useState } from "react";
 
 const defaultJson = {
   squadName: "Super hero squad",
@@ -62,7 +62,9 @@ export default function App() {
       </div> */}
       <Sidebar data={jsonData} setData={setJsonData} />
       <div>
-        <FlowGraph data={jsonData} />
+        <Suspense>
+          <FlowGraph data={jsonData} />
+        </Suspense>
         {/* <LayoutFlow /> */}
       </div>
     </div>

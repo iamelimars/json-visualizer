@@ -14,7 +14,6 @@ import ReactFlow, {
   Panel,
   ConnectionLineType,
   NodeTypes,
-  Position,
 } from "reactflow";
 
 import "reactflow/dist/style.css";
@@ -249,9 +248,6 @@ export function FlowGraph({ data }: Props) {
     // }
 
     convertJsonToFlowData(data);
-    // const newEdgeData = setEdgeData();
-
-    console.log(edgeData);
 
     const { nodes: layoutedNodes, edges: layoutedEdges } = getLayoutedElements(
       nodeData,

@@ -65,10 +65,8 @@ export const Sidebar = ({ data, setData }: Props) => {
         <div className="flex justify-between p-4">
           <h1>JSON visualizer</h1>
           {errorMessage ? (
-            // <div className="absolute bottom-2 left-1 right-2 rounded-sm bg-slate-600 z-10 p-4">
             <h1 className="text-red-500">{errorMessage}</h1>
-          ) : // </div>
-          null}
+          ) : null}
         </div>
         <AceEditor
           mode="json"
@@ -80,7 +78,6 @@ export const Sidebar = ({ data, setData }: Props) => {
           style={{ width: "100%", height: "100%" }}
           defaultValue={JSON.stringify(data, null, 2)}
           enableBasicAutocompletion
-          onValidate={(annotations) => console.log(annotations)}
         />
       </div>
       {/* Handle */}

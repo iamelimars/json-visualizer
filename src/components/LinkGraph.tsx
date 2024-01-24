@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Group } from "@visx/group";
 import { hierarchy, Tree } from "@visx/hierarchy";
 import { LinearGradient } from "@visx/gradient";
-import { pointRadial } from "d3-shape";
+// import { pointRadial } from "d3-shape";
 
 import LinkControls from "./LinkControls";
 
@@ -143,9 +143,11 @@ function LinkGraph({
                   let top: number;
                   let left: number;
                   if (layout === "polar") {
-                    const [radialX, radialY] = pointRadial(node.x, node.y);
-                    top = radialY;
-                    left = radialX;
+                    // const [radialX, radialY] = pointRadial(node.x, node.y);
+                    // top = radialY;
+                    // left = radialX;
+                    top = 0;
+                    left = 0;
                   } else if (orientation === "vertical") {
                     top = node.y;
                     left = node.x;

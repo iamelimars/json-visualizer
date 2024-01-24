@@ -1,3 +1,4 @@
+import { Fragment } from "react";
 import { Handle, Position } from "reactflow";
 
 interface Props {
@@ -39,14 +40,14 @@ function JSONNode({ data, targetPosition, sourcePosition }: Props) {
       </div> */}
       <div className="flex flex-col p-4">
         {Object.entries(data).map(([key, value], index) => (
-          <>
+          <Fragment key={key + value}>
             {index < 4 ? (
               <div>
                 <span className="text-cyan-900">{key}</span>:{" "}
                 {renderValue(value)}
               </div>
             ) : null}
-          </>
+          </Fragment>
         ))}
         {Object.entries(data).length > 4 ? (
           <>
