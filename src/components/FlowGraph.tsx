@@ -24,17 +24,13 @@ import StringNode from "./StringNode";
 const dagreGraph = new dagre.graphlib.Graph();
 dagreGraph.setDefaultEdgeLabel(() => ({}));
 
-// const nodeWidth = 172;
-// const nodeHeight = 36;
+const snapGrid = [50, 50];
+
 const nodeWidth = 200;
 const nodeHeight = 200;
 
 const stringNodeWidth = 200;
 const stringNodeHeight = 36;
-// const stringNodeWidth = 200;
-// const stringNodeHeight = 50;
-
-const edgeType = "smoothstep";
 
 const getLayoutedElements = (nodes: any[], edges: any[], direction = "TB") => {
   const isHorizontal = direction === "LR";
@@ -152,7 +148,7 @@ export function FlowGraph({ data }: Props) {
             id: Math.random().toString(),
             source: rootParentID,
             target: topLevelId,
-            type: edgeType,
+            // type: edgeType,
             animated: true,
           });
         }
@@ -174,7 +170,7 @@ export function FlowGraph({ data }: Props) {
               id: Math.random().toString(),
               source: topLevelId,
               target: parentId,
-              type: edgeType,
+              // type: edgeType,
               animated: true,
             });
           }
@@ -192,7 +188,7 @@ export function FlowGraph({ data }: Props) {
                 id: Math.random().toString(),
                 source: parentId,
                 target: nodeId,
-                type: edgeType,
+                // type: edgeType,
                 animated: true,
               });
             } else {
@@ -211,7 +207,7 @@ export function FlowGraph({ data }: Props) {
               id: Math.random().toString(),
               source: rootParentID ?? topLevelId,
               target: nodeId,
-              type: edgeType,
+              // type: edgeType,
               animated: true,
             });
           }
@@ -252,7 +248,6 @@ export function FlowGraph({ data }: Props) {
     const { nodes: layoutedNodes, edges: layoutedEdges } = getLayoutedElements(
       nodeData,
       edgeData
-      // newEdgeData
     );
 
     setNodes(() => layoutedNodes);
@@ -298,6 +293,15 @@ export function FlowGraph({ data }: Props) {
         autoPanOnNodeDrag
         autoFocus
         nodeTypes={nodeTypes}
+        snapGrid={snapGrid as [number, number]}
+        snapToGrid={true}
+        fitViewOptions={{
+          // maxZoom: 0.3,
+          // minZoom: 100000,
+          nodes: nodes,
+        }}
+        maxZoom={0.9}
+        minZoom={0.1}
       >
         <Controls />
         <MiniMap />
